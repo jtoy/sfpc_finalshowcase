@@ -19,8 +19,8 @@ float mapped_wtf;
 float mapped_wtf_prev;
 
 void setup() {
-  size(640, 640);
-  //fullScreen();
+  //size(640, 640);
+  fullScreen();
   kinect = new Kinect(this);
   kinect.initDepth();
   fill(255);
