@@ -1,6 +1,6 @@
 import org.openkinect.freenect.*;
 import org.openkinect.processing.*;
-
+String useNow = "x";
 Kinect kinect;
 color main_color = color(0, 0, 0);
 float[] depthLookUp = new float[2048];
@@ -42,14 +42,22 @@ void draw() {
   for (int q = 1; q < 15; q++) {
     float s = q*12;
     for (int i = 0; i < 360; i+=3  ) {
-      float x = sin(radians(i*mapped_wtf))*s;
+      float xz;
       float y = cos(radians(i))*s;
       float z = tan(radians(i))*s;
+      if(useNow.equals("x")){
+        //x
+        xz = sin(radians(i*mapped_wtf))*s;
+      }else{
+        //z
+        xz = tan(radians(i))*s;
+      }
+
 
       float m = 0.5+sin(radians(sin(radians(frameCount))*s+i+frameCount*2));
       if (m > 0) {
         //TODO make timer
-        ellipse(x, y, m*q, m*q);
+        ellipse(xz, y, m*q, m*q);
       }
     }  
   }
@@ -66,6 +74,13 @@ void draw() {
   mapped_wtf_prev = mapped_wtf;
 }
 
+void toggle(){
+  if(useNow.equals("x")){
+    useNow = "z";
+  }else {
+    useNow = "x";
+  } 
+}
 
 float getRealDepth() {
   int closestValue = 8000;
