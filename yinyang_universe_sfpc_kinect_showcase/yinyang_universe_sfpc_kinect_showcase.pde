@@ -21,6 +21,7 @@ float mapped_wtf_prev;
 void setup() {
   //size(640, 640);
   fullScreen();
+  frameRate(40);
   kinect = new Kinect(this);
   kinect.initDepth();
   fill(255);
@@ -29,6 +30,7 @@ void setup() {
 
 void draw() {
   background(onoff);
+  noCursor();
   translate(width/2, height/2);
   scale(scaler);
   float var = getRealDepth();
@@ -68,6 +70,9 @@ void draw() {
   fill(255, 255, 0);
   rect(0, map(mapped_wtf, 1, -0.5, -320, 320), 500, 5);
   popStyle();
+  if(frameCount%1200 == 0){
+    toggle();
+  }
 
   scaler = map(mapped_wtf, 1, -0.5, 1, 5);
 
