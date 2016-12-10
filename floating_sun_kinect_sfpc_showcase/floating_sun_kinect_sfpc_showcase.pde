@@ -156,7 +156,7 @@ void setup() {
 
 void draw() {
   //background(0);
-  noCursor()
+  noCursor();
   fill(0, 5);
    noStroke();
    rect(0, 0, width, height);
