@@ -68,7 +68,7 @@ void draw() {
 
   pushStyle();
   fill(255, 255, 0);
-  rect(0, map(mapped_wtf, 1, -0.5, -320, 320), 500, 5);
+  //rect(0, map(mapped_wtf, 1, -0.5, -320, 320), 500, 5);
   popStyle();
   if(frameCount%1200 == 0){
     toggle();
